@@ -5,10 +5,8 @@ import org.apache.commons.lang3.StringUtils;
 import ru.multicon.viber4j.utils.JsonUtils;
 import ru.multicon.viber4j.utils.ViberConstants;
 
-import java.net.URL;
-
 /**
- * Class to create a custom Viber button.
+ * Class for creating a custom Viber button.
  * Viber buttons are part of messages with keyboard and carousel messages.
  *
  * @author n.zvyagintsev
