@@ -120,9 +120,8 @@ class ViberBotImpl implements ViberBot {
 
     @Override
     public List<UserOnline> getUserOnline(List<String> receiverIds) {
-        StringBuilder request = new StringBuilder("{\"ids\":[");
-        receiverIds.forEach(id -> request.append('"').append(id).append('"')); // TODO: Where ","?
-        request.append("]}");
+        StringBuilder request = new StringBuilder("{\"ids\":[").append(
+                StringUtils.join(receiverIds, ',')).append("]}");
         String response;
         try {
             response = viberClient.post(request.toString(), ViberConstants.VIBER_USER_ONLINE_URL);
