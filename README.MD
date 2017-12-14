@@ -2,6 +2,9 @@
 
 Java library for working with Viber REST API.
 
+## Requirements
+* Java 8
+
 ## Creating Viber Bot
 
 1) For creating Viber bot you need registration an account in Viber and get auth token.
