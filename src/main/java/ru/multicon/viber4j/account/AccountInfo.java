@@ -76,8 +76,13 @@ public class AccountInfo {
     }
 
     public List<String> getEventTypes() {
-        // TODO: implement
-        return null;
+        return Optional.ofNullable(json.get("event_types")).map(JsonElement::getAsJsonArray).map(
+                events_list -> {
+                    List<String> result = new ArrayList<>(events_list.size());
+                    events_list.forEach(item -> result.add(item.getAsString()));
+                    return result;
+                }
+        ).orElse(Collections.EMPTY_LIST);
     }
 
     public Integer getSubscribersCount() {
