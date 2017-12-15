@@ -199,16 +199,14 @@ public class ViberButton {
      * enum with variants of buttons caption size
      */
     public enum TextSize {
-        small, large, medium
+        SMALL, LARGE, MEDIUM
     }
-
-    ;
 
     /**
      * Align of text (for properties TextVAlign, TextHAlign)
      */
     public enum TextAlign {
-        left, middle, right
+        LEFT, MIDDLE, RIGHT
     }
 
     public static class InternalBrowser {
