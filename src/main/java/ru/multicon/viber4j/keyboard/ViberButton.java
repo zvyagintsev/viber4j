@@ -89,12 +89,12 @@ public class ViberButton {
     }
 
     public ViberButton setTextVAlign(TextAlign textAlign) {
-        this.textVAlign = textAlign.name();
+        this.textVAlign = textAlign.name().toLowerCase();
         return this;
     }
 
     public ViberButton setTextHAlign(TextAlign textAlign) {
-        this.textHAlign = textAlign.name();
+        this.textHAlign = textAlign.name().toLowerCase();
         return this;
     }
 
@@ -110,7 +110,7 @@ public class ViberButton {
      * @return
      */
     public ViberButton setTextSize(TextSize textSize) {
-        this.textSize = textSize.name();
+        this.textSize = textSize.name().toLowerCase();
         return this;
     }
 

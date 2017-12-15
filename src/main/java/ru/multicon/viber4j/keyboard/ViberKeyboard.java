@@ -23,7 +23,7 @@ public class ViberKeyboard {
     private Integer buttonsGroupColumns;
     private Integer buttonsGroupRows;
     private Integer heightScale;
-    private Integer state;
+    private InputFieldState state;
 
     public ViberKeyboard addButton(ViberButton button) {
         buttons.add(button);
@@ -60,13 +60,13 @@ public class ViberKeyboard {
         return this;
     }
 
-    public ViberKeyboard setInputFieldState(Integer state) {
+    public ViberKeyboard setInputFieldState(InputFieldState state) {
         this.state = state;
         return this;
     }
 
     enum InputFieldState {
-        regular, minimized, hidden;
+        REGULAR, MINIMIZED, HIDDEN;
     }
 
     /**
@@ -86,7 +86,7 @@ public class ViberKeyboard {
         keyboard.addProperty("ButtonsGroupColumns", buttonsGroupColumns);
         keyboard.addProperty("ButtonsGroupRows", buttonsGroupRows);
         keyboard.addProperty("HeightScale", heightScale);
-        keyboard.addProperty("InputFieldState", state);
+        keyboard.addProperty("InputFieldState", state.name().toLowerCase());
         JsonArray buttonsArray = new JsonArray();
         for (ViberButton button : buttons) {
             buttonsArray.add(button.toJson());
