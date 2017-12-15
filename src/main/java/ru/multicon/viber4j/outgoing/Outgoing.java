@@ -44,7 +44,7 @@ public interface Outgoing {
 
     boolean postSticker(Integer stickerId);
 
-    boolean postCarousel(List<ViberButton> buttons, Integer rows, Integer columns, String bgColors);
+    boolean postCarousel(ViberKeyboard keyboard, String text);
 
 
 }

@@ -97,8 +97,8 @@ public class OutgoingImpl implements Outgoing {
         setMessageType(MessageType.TEXT);
         message.addProperty(ViberConstants.MESSAGE_TEXT, text);
         Optional.ofNullable(keyboard).
-                map(viberKeyboard -> viberKeyboard.toJson()).
-                ifPresent(jsonObject -> message.add(ViberConstants.KEYBOARD, keyboard.toJson()));
+                map(viberKeyboard -> viberKeyboard.toJson(ViberConstants.KEYBOARD)).
+                ifPresent(jsonObject -> message.add(ViberConstants.KEYBOARD, jsonObject));
         return sendMessage();
     }
 
@@ -178,20 +178,13 @@ public class OutgoingImpl implements Outgoing {
     }
 
     @Override
-    public boolean postCarousel(
-            List<ViberButton> buttons, Integer rows, Integer columns, String bgColors) {
+    public boolean postCarousel(ViberKeyboard keyboard, String text) {
         setMessageType(MessageType.CAROUSEL);
         message.addProperty(ViberConstants.MIN_API_VERSION, 2);
-        JsonObject richMedia = new JsonObject();
-        richMedia.addProperty("Type", "rich_media");
-        richMedia.addProperty(ViberConstants.BTN_GROUP_COLUMNS, columns);
-        richMedia.addProperty(ViberConstants.BTN_GROUP_ROWS, rows);
-        if (StringUtils.isNotEmpty(bgColors))
-            richMedia.addProperty(ViberConstants.BG_COLOR, bgColors);
-        JsonArray jsonButtons = new JsonArray(buttons.size());
-        buttons.forEach(viberBtn -> jsonButtons.add(viberBtn.toJson()));
-        richMedia.add(ViberConstants.BUTTONS, jsonButtons);
-        message.add("rich_media", richMedia);
+        message.addProperty(MessageType.CAROUSEL.getKeyName(), text);
+        Optional.ofNullable(keyboard).
+                map(viberKeyboard -> viberKeyboard.toJson(MessageType.CAROUSEL.getKeyName())).
+                ifPresent(jsonObject -> message.add(MessageType.CAROUSEL.getKeyName(), jsonObject));
         return sendMessage();
     }
 
