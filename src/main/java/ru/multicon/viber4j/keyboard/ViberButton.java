@@ -1,5 +1,6 @@
 package ru.multicon.viber4j.keyboard;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import org.apache.commons.lang3.StringUtils;
 import ru.multicon.viber4j.utils.JsonUtils;
@@ -29,6 +30,7 @@ public class ViberButton {
     private String textSize;
     private String textBgGradientColor;
     private InternalBrowser internalBrowser;
+    private Integer[] textPaddings;
 
     /**
      * Default constructor
@@ -65,6 +67,24 @@ public class ViberButton {
 
     public ViberButton setImage(String image) {
         this.image = image;
+        return this;
+    }
+
+    public ViberButton setTextPaddings(Integer top, Integer left, Integer bottom, Integer right) {
+        this.textPaddings = new Integer[4];
+        this.textPaddings[0] = top;
+        this.textPaddings[1] = left;
+        this.textPaddings[2] = bottom;
+        this.textPaddings[3] = right;
+        return this;
+    }
+
+    public ViberButton setTextPaddings(Integer paddings) {
+        this.textPaddings = new Integer[4];
+        this.textPaddings[0] = paddings;
+        this.textPaddings[1] = paddings;
+        this.textPaddings[2] = paddings;
+        this.textPaddings[3] = paddings;
         return this;
     }
 
@@ -150,6 +170,12 @@ public class ViberButton {
             button.addProperty(ViberConstants.BTN_IMAGE, image);
         if (StringUtils.isNotEmpty(text))
             button.addProperty(ViberConstants.BTN_TEXT, text);
+        if(textPaddings != null) {
+            JsonArray paddings = new JsonArray(4);
+            for(Integer padding: textPaddings)
+                paddings.add(padding);
+            button.add(ViberConstants.BTN_TEXT_PADDING, paddings);
+        }
         if (StringUtils.isNotEmpty(textVAlign))
             button.addProperty(ViberConstants.BTN_TEXT_V_ALIGN, textVAlign);
         if (StringUtils.isNotEmpty(textHAlign))

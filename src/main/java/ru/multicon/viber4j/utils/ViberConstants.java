@@ -78,6 +78,7 @@ public class ViberConstants {
     public static final String BTN_ACTION_TYPE = "ActionType";
     public static final String BTN_IMAGE = "Image";
     public static final String BTN_TEXT = "Text";
+    public static final String BTN_TEXT_PADDING = "TextPaddings";
     public static final String BTN_TEXT_V_ALIGN = "TextVAlign";
     public static final String BTN_TEXT_H_ALIGN = "TextHAlign";
     public static final String BTN_TEXT_OPACITY = "TextOpacity";
