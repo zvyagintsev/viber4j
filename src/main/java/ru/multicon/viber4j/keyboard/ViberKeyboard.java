@@ -3,6 +3,7 @@ package ru.multicon.viber4j.keyboard;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
 import ru.multicon.viber4j.utils.ViberConstants;
 
 import java.util.ArrayList;
@@ -79,13 +80,21 @@ public class ViberKeyboard {
         if (CollectionUtils.isEmpty(buttons))
             return null;
         JsonObject keyboard = new JsonObject();
-        keyboard.addProperty("Type", type);
-        keyboard.addProperty("DefaultHeight", defaultHeight);
-        keyboard.addProperty("BgColor", bgColor);
-        keyboard.addProperty("CustomDefaultHeight", customDefaultHeight);
-        keyboard.addProperty("ButtonsGroupColumns", buttonsGroupColumns);
-        keyboard.addProperty("ButtonsGroupRows", buttonsGroupRows);
-        keyboard.addProperty("HeightScale", heightScale);
+        if(StringUtils.isNotEmpty(type))
+            keyboard.addProperty("Type", type);
+        if(defaultHeight != null)
+            keyboard.addProperty("DefaultHeight", defaultHeight);
+        if(StringUtils.isNotEmpty(bgColor))
+            keyboard.addProperty("BgColor", bgColor);
+        if(customDefaultHeight != null)
+            keyboard.addProperty("CustomDefaultHeight", customDefaultHeight);
+        if(buttonsGroupColumns != null)
+            keyboard.addProperty("ButtonsGroupColumns", buttonsGroupColumns);
+        if(buttonsGroupRows != null)
+            keyboard.addProperty("ButtonsGroupRows", buttonsGroupRows);
+        if(heightScale != null)
+            keyboard.addProperty("HeightScale", heightScale);
+        if(state != null)
         keyboard.addProperty("InputFieldState", state.name().toLowerCase());
         JsonArray buttonsArray = new JsonArray();
         for (ViberButton button : buttons) {
