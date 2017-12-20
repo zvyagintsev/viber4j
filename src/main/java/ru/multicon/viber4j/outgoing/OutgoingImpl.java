@@ -5,7 +5,7 @@ import com.google.gson.JsonObject;
 import org.apache.commons.lang3.StringUtils;
 import ru.multicon.viber4j.SenderInfo;
 import ru.multicon.viber4j.http.ViberClient;
-import ru.multicon.viber4j.keyboard.ViberButton;
+import ru.multicon.viber4j.keyboard.RichMedia;
 import ru.multicon.viber4j.keyboard.ViberKeyboard;
 import ru.multicon.viber4j.utils.ViberConstants;
 
@@ -97,7 +97,7 @@ public class OutgoingImpl implements Outgoing {
         setMessageType(MessageType.TEXT);
         message.addProperty(ViberConstants.MESSAGE_TEXT, text);
         Optional.ofNullable(keyboard).
-                map(viberKeyboard -> viberKeyboard.toJson(ViberConstants.KEYBOARD)).
+                map(viberKeyboard -> viberKeyboard.toJson()).
                 ifPresent(jsonObject -> message.add(ViberConstants.KEYBOARD, jsonObject));
         return sendMessage();
     }
@@ -178,12 +178,12 @@ public class OutgoingImpl implements Outgoing {
     }
 
     @Override
-    public boolean postCarousel(ViberKeyboard keyboard, String text) {
+    public boolean postCarousel(RichMedia richMedia) {
         setMessageType(MessageType.CAROUSEL);
         message.addProperty(ViberConstants.MIN_API_VERSION, 2);
-        message.addProperty(MessageType.CAROUSEL.getKeyName(), text);
-        Optional.ofNullable(keyboard).
-                map(viberKeyboard -> viberKeyboard.toJson(MessageType.CAROUSEL.getKeyName())).
+        //message.addProperty(MessageType.CAROUSEL.getKeyName(), text);
+        Optional.ofNullable(richMedia).
+                map(rm -> rm.toJson()).
                 ifPresent(jsonObject -> message.add(MessageType.CAROUSEL.getKeyName(), jsonObject));
         return sendMessage();
     }

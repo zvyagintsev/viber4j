@@ -1,9 +1,7 @@
 package ru.multicon.viber4j.outgoing;
 
-import ru.multicon.viber4j.keyboard.ViberButton;
+import ru.multicon.viber4j.keyboard.RichMedia;
 import ru.multicon.viber4j.keyboard.ViberKeyboard;
-
-import java.util.List;
 
 /**
  * @author n.zvyagintsev
@@ -44,7 +42,7 @@ public interface Outgoing {
 
     boolean postSticker(Integer stickerId);
 
-    boolean postCarousel(ViberKeyboard keyboard, String text);
+    boolean postCarousel(RichMedia richMedia);
 
 
 }

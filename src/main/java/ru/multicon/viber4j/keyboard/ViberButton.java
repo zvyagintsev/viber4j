@@ -203,7 +203,8 @@ public class ViberButton {
             button.addProperty(ViberConstants.BTN_BG_MEDIA, bgMedia);
         if (bgLoop != null)
             button.addProperty(ViberConstants.BTN_BG_LOOP, bgLoop);
-        button.addProperty(ViberConstants.BTN_ACTION_TYPE, actionType.actionName());
+        if(actionType != null)
+            button.addProperty(ViberConstants.BTN_ACTION_TYPE, actionType.actionName());
         if (StringUtils.isNotEmpty(image))
             button.addProperty(ViberConstants.BTN_IMAGE, image);
         if (StringUtils.isNotEmpty(text))
