@@ -6,7 +6,7 @@
 
     <groupId>ru.multicon</groupId>
     <artifactId>viber4j</artifactId>
-    <version>0.1-SNAPSHOT</version>
+    <version>0.9</version>
     <build>
         <plugins>
             <plugin>
@@ -47,9 +47,5 @@
             <version>4.1</version>
         </dependency>
     </dependencies>
-
-    <!--modules>
-        <module>examples/spring-example</module>
-    </modules-->
 
 </project>
