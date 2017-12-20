@@ -26,41 +26,86 @@ public class ViberKeyboard {
     private Integer heightScale;
     private InputFieldState state;
 
+    /**
+     * Adds button to container.
+     *
+     * @param button the Viber button
+     * @return this container instance
+     */
     public ViberKeyboard addButton(ViberButton button) {
         buttons.add(button);
         return this;
     }
 
+    /**
+     *
+     * @param bgColor background color code
+     * @return this container instance
+     */
     public ViberKeyboard setBgColor(String bgColor) {
         this.bgColor = bgColor;
         return this;
     }
 
+    /**
+     *
+     * @param defaultHeight When true - the keyboard will always be displayed with the same height as the native keyboard.
+     *                      When false - short keyboards will be displayed with the minimal possible height
+     * @return this container instance
+     */
     public ViberKeyboard setDefaultHeight(Boolean defaultHeight) {
         this.defaultHeight = defaultHeight;
         return this;
     }
 
+    /**
+     *
+     * @param customDefaultHeight How much percent of free screen space in chat
+     *                            should be taken by keyboard.
+     * @return this container instance
+     */
     public ViberKeyboard setCustomDefaultHeight(Integer customDefaultHeight) {
         this.customDefaultHeight = customDefaultHeight;
         return this;
     }
 
+    /**
+     *
+     * @param heightScale Allow use custom aspect ratio for Carousel content blocks.
+     *                    Scales the height of the default square block (which is defined on client side)
+     *                    to the given value in percents.
+     * @return this container instance
+     */
     public ViberKeyboard setHeightScale(Integer heightScale) {
         this.heightScale = heightScale;
         return this;
     }
 
+    /**
+     *
+     * @param buttonsGroupColumns  Represents size of block for grouping buttons during layout
+     * @return this container instance
+     */
     public ViberKeyboard setButtonsGroupColumns(Integer buttonsGroupColumns) {
         this.buttonsGroupColumns = buttonsGroupColumns;
         return this;
     }
 
+    /**
+     *
+     * @param buttonsGroupRows Represents size of block for grouping buttons during layout
+     * @return this container instance
+     */
     public ViberKeyboard setButtonsGroupRows(Integer buttonsGroupRows) {
         this.buttonsGroupRows = buttonsGroupRows;
         return this;
     }
 
+    /**
+     *
+     * @param state Customize the keyboard input field. regular- display regular size input field
+     * @return this container instance
+     */
     public ViberKeyboard setInputFieldState(InputFieldState state) {
         this.state = state;
         return this;
@@ -74,7 +119,7 @@ public class ViberKeyboard {
      * Creates JsonObject with keyboard properties for sending to Viber
      *
      * @param type type of Keyboard
-     * @return
+     * @return json with button container properties
      */
     public JsonObject toJson(String type) {
         if (CollectionUtils.isEmpty(buttons))
