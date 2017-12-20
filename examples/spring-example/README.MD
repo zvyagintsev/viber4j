@@ -1,4 +1,4 @@
-#Example of using Viber4j
+# Example of using Viber4j
 
 This is an example of the Viber bot on Spring Boot.
 

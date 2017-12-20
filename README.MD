@@ -15,21 +15,21 @@ You can use LetsEncrypt certificates.
 
 Registration a web-hook (for callback messages from Viber)
 ```
-String webHookUrl = "url for web-hook";
-String botToken = "Viber auth token";
+String webHookUrl = "https://your/webhook/url";
+String botToken = "Viber-auth-token";
 ViberBotManager.viberBot(botToken).setWebHook(webHookUrl);
 ```
 
 Removing a web-hook
 ```
-String botToken = "Viber auth token";
+String botToken = "Viber-auth-token";
 ViberBotManager.viberBot(botToken).removeWebHook();
 ```
 Sending a text to a Viber client:
 ```
-String botToken = "Viber auth token";
+String botToken = "Viber-auth-token";
 ViberBot bot  = ViberBotManager.viberBot(botToken);
-String userId = "Viber client ID";
+String userId = "ViberClientID==";
 bot.messageForUser(userId).postText("Text");
 ```
 Sending an image to a Viber client:
@@ -37,7 +37,7 @@ Sending an image to a Viber client:
 String botToken = "Viber auth token";
 ViberBot bot  = ViberBotManager.viberBot(botToken);
 String userId = "Viber client ID";
-bot.messageForUser(userId).postPicture("Picture Url", "Description");
+bot.messageForUser(userId).postPicture("https://host/Picture/Url", "Description");
 ```
 Sending a keyboard to a client:
 ```
@@ -45,22 +45,22 @@ String botToken = "Viber auth token";
 
 ViberBot bot  = ViberBotManager.viberBot(botToken);
 
-ViberKeyboard keyboard = new ViberKeyboard().
-    addButton(
-        new ViberButton("1").setActionType("reply").
-        setText("Button1 cupture").setBgColor("#D26464")).
-    addButton(
-        new ViberButton("2").setActionType("reply").
-        setText("Button2 cupture").setTextSize(ViberButton.TextSize.large)).
-    addButton(
-        ViberButton.createButtonForUrl("https://google.ru").
-        setImage("http://host/your/image"));
+new ViberKeyboard().
+                addButton(
+                        new ViberButton("1").
+                                setText("Button 1").setTextSize(ViberButton.TextSize.LARGE)).
+                addButton(
+                        new ViberButton("2").
+                                setText("Button 2").setBgColor("#00FF00")).
+                addButton(
+                        new ViberButton("3").
+                                setText("Button 3").setBgColor("#00BFFF"));
         
 bot.messageForUser(userId).postText("Please, select one", keyboard);
 ``` 
 Posting public message:
 ```
-String botToken = "Viber auth token";
+String botToken = "Viber-auth-token";
 
 ViberBot bot  = ViberBotManager.viberBot(botToken);
 

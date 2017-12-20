@@ -1,7 +1,7 @@
 viber:
-  token: 46ce9ad6f7a7d081-31e5c05622d523b5-bb46ef2fecc8210f
-  web-hook: https://claris-verbis.xyz/viberbot
-  media-source-url: https://claris-verbis.xyz/images/
+  token: your-token
+  web-hook: https://your-host/viberbot
+  media-source-url: https://your-host/images/
 
 logging:
   level:
